@@ -1,16 +1,25 @@
-# React + Vite
+# Quizz Run React 
+<p align="center"> <img src="https://img.shields.io/badge/React-18+-blue" />  <img src="https://img.shields.io/badge/Status-Active-brightgreen" /> </p>
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+# Description
 
-Currently, two official plugins are available:
+quizz-run-react est une application front-end en React qui propose un quiz en ligne. L’objectif est d’afficher des questions, de capturer les réponses de l’utilisateur, de calculer un score, et d’afficher les résultats à la fin du quiz — idéal pour des jeux, des évaluations ou des sondages interactifs.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+# Fonctionnalités
 
-## React Compiler
+Interface utilisateur interactive en React (affichage des questions, choix multiples, navigation entre questions, etc.).
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+Suivi des réponses utilisateur.
 
-## Expanding the ESLint configuration
+Calcul du score final.
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+Affichage des résultats et éventuellement des corrections / feedback selon l’implémentation.
+
+(Optionnel) Possibilité de configurer des quiz — via JSON ou un service backend selon l’extension.
+
+📂 Structure du projet
+/
+├── public/                  # Fichiers publics (HTML, favicon, …)
+├── src/                     # Code source React (components, styles, assets…)
+├── package.json             # Dépendances & scripts
+└── README.md                # Ce fichier
