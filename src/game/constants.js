@@ -7,6 +7,9 @@ export const TRACK_SPEED = 4;
 // Durée entre deux frames du runner
 export const RUNNER_FRAME_SPEED = 0.15;
 
+// Augmentation de vitesse après chaque question
+export const SPEED_INCREMENT_PER_QUESTION = 0.1; 
+
 // Nombre de réponses par question
 export const NUM_OPTIONS = 3;
 
