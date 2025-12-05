@@ -1,0 +1,8 @@
+body {
+  margin: 0;
+ 
+  background-color: #c2ddf0; 
+  
+  min-height: 100vh;
+  overflow: hidden; 
+}

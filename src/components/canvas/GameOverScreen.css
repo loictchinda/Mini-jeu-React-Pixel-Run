@@ -1,0 +1,103 @@
+/* L'arrière-plan qui couvre TOUT l'écran */
+.game-over-overlay {
+  position: fixed; /* Force l'affichage par dessus tout */
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background-color: rgba(0, 0, 0, 0.85); /* Fond très sombre */
+  backdrop-filter: blur(5px); /* Effet de flou moderne */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 9999; /* Toujours au premier plan */
+  font-family: 'Press Start 2P', cursive;
+}
+
+/* La boîte de contenu */
+.game-over-card {
+  background: linear-gradient(145deg, #2c3e50, #34495e);
+  border: 4px solid #ecf0f1;
+  border-radius: 20px;
+  padding: 40px;
+  text-align: center;
+  box-shadow: 0 0 30px rgba(0, 170, 255, 0.5); /* Lueur bleue */
+  max-width: 500px;
+  width: 90%;
+  animation: slideIn 0.5s ease-out;
+}
+
+/* Titre */
+.game-over-title {
+  font-size: 2.5rem;
+  color: #e74c3c;
+  margin: 0 0 20px 0;
+  text-shadow: 4px 4px 0 #000;
+  text-transform: uppercase;
+}
+
+/* Scores */
+.score-section {
+  background: rgba(0, 0, 0, 0.3);
+  padding: 20px;
+  border-radius: 10px;
+  margin-bottom: 30px;
+  border: 2px dashed #7f8c8d;
+}
+
+.score-text {
+  color: #f1c40f;
+  font-size: 1.2rem;
+  margin: 10px 0;
+}
+
+.highscore-text {
+  color: #bdc3c7;
+  font-size: 0.8rem;
+  margin-top: 5px;
+}
+
+/* Boutons */
+.actions {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.btn-action {
+  font-family: 'Press Start 2P', cursive;
+  padding: 15px;
+  font-size: 1rem;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  color: white;
+  transition: all 0.2s;
+  text-transform: uppercase;
+  box-shadow: 0 4px 0 #000;
+}
+
+.btn-action:active {
+  transform: translateY(4px);
+  box-shadow: 0 0 0 #000;
+}
+
+.btn-restart {
+  background-color: #2ecc71; /* Vert */
+}
+.btn-restart:hover {
+  background-color: #27ae60;
+}
+
+.btn-home {
+  background-color: #e67e22; /* Orange */
+}
+.btn-home:hover {
+  background-color: #d35400;
+}
+
+/* Animation d'entrée */
+@keyframes slideIn {
+  from { transform: translateY(-50px); opacity: 0; }
+  to { transform: translateY(0); opacity: 1; }
+}
