@@ -1,41 +1,104 @@
-.game-over-container {
-  position: absolute;
-  left: 0;
-  width: 100%;
-  height: 100%;
+/* --- RETRO GAME OVER STYLE --- */
+
+/* Global retro font */
+@import url('https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap');
+
+body {
+  font-family: 'Press Start 2P', cursive;
+}
+
+/* Container */
+.game-over-content {
+  display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  color: white;
-  font-family: 'Press Start 2P', cursive;
   text-align: center;
-  z-index: 100; 
 }
 
-.game-over-container h1 {
-  margin-top: 30px;
-  font-size: 3em;
-  color: #ca1b0b; 
-  text-shadow: 3px 3px 0 #000;
+.game-over-container {
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: black;
+  color: #fff;
+  position: relative;
+  overflow: hidden;
 }
 
-.game-over-container p {
-  font-size: 1.5em;
-  margin: 20px 0;
+/* CRT effect */
+.game-over-container::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: repeating-linear-gradient(
+    rgba(255, 255, 255, 0.05) 0px,
+    rgba(255, 255, 255, 0.05) 2px,
+    transparent 3px,
+    transparent 4px
+  );
+  pointer-events: none;
+  opacity: 0.1;
 }
 
-.game-over-container button {
+/* Title */
+.game-over-title {
+  font-size: 48px;
+  color: #ff004d;
+  text-shadow: 4px 4px #1a1a1a;
+  margin-bottom: 20px;
+}
+
+/* Score text */
+.final-score-text {
+  font-size: 16px;
+  margin-bottom: 30px;
+}
+
+.score-value {
+  color: #faff00;
+  text-shadow: 2px 2px #333;
+}
+
+/* Retro button */
+.restart-button {
   font-family: 'Press Start 2P', cursive;
-  font-size: 1.2em;
-  padding: 15px 30px;
-  border: 2px solid white;
-  background-color: #0074D9; 
-  color: white;
+  padding: 12px 25px;
+  background: #00e756;
+  border: 3px solid #008f39;
+  color: black;
   cursor: pointer;
-  text-shadow: 2px 2px 0 #000;
-  transition: background-color 0.2s;
+  box-shadow: 4px 4px 0px #008f39;
+  transition: 0.1s;
 }
 
-.game-over-container button:hover {
-  background-color: #07386d;
+.restart-button:active {
+  box-shadow: 2px 2px 0px #008f39;
+  transform: translate(2px, 2px);
+}
+
+/* Retro message */
+.retro-message {
+  font-size: 12px;
+  margin-top: 25px;
+  opacity: 0.7;
+}
+
+/* Pixel particles */
+.pixel-star {
+  position: absolute;
+  width: 4px;
+  height: 4px;
+  background: white;
+  animation: float 4s linear infinite;
+  opacity: 0.8;
+}
+
+@keyframes float {
+  from { transform: translateY(0); }
+  to { transform: translateY(-800px); }
 }
