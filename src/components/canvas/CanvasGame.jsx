@@ -23,11 +23,12 @@ export default function CanvasGame({ question, onAnswerChosen, isGameOver, score
       canvas.removeEventListener("click", clickHandler);
       stopGame();
     };
- 
+
   }, []);
 
   // Gestion de la vitesse basée sur le score
   useEffect(() => {
+
 
     const safeScore = (typeof score === 'number' && !isNaN(score)) ? score : 0;
     
