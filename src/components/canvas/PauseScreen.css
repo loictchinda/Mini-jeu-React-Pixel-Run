@@ -1,0 +1,80 @@
+/* L'arrière-plan sombre qui couvre tout le jeu */
+.pause-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.4); 
+    display: flex;
+    justify-content: center; 
+    align-items: center;     
+    z-index: 100;            
+    backdrop-filter: blur(2px); 
+}
+
+/* La boîte "Glassmorphism" (Effet Verre) */
+.pause-box {
+    background: linear-gradient(
+            135deg,
+            rgba(255, 255, 255, 0.15),
+            rgba(255, 255, 255, 0.05)
+    );
+    padding: 40px 60px;
+    border-radius: 12px;
+    text-align: center;
+    color: white;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
+    backdrop-filter: blur(10px); 
+    -webkit-backdrop-filter: blur(10px);
+    font-family: 'Technos', sans-serif; 
+    min-width: 300px;
+}
+
+.pause-title {
+    margin-top: 0;
+    margin-bottom: 30px;
+    font-size: 1.5rem;
+    font-family: 'Technos', sans-serif;
+    letter-spacing: 1px;
+}
+
+/* Style général des boutons */
+.pause-btn {
+    display: block;
+    width: 100%;
+    padding: 12px;
+    margin-bottom: 15px;
+    border: none;
+    border-radius: 6px;
+    font-size: 1.1rem;
+    font-weight: bold;
+    cursor: pointer;
+    color: white;
+    text-transform: uppercase;
+    transition: transform 0.1s, box-shadow 0.1s;
+    font-family: 'JetBrains Mono', monospace;
+}
+
+/* Bouton Continuer (Vert Pomme) */
+.btn-resume {
+    background-color: #9fef45;
+    color: #2c3e50; /* Texte foncé pour le contraste */
+    box-shadow: 0 4px #7bc430;
+}
+.btn-resume:active {
+    transform: translateY(2px);
+    box-shadow: 0 2px #7bc430;
+}
+
+/* Bouton Quitter (Vert plus foncé) */
+.btn-quit {
+    background-color: #8cc63f;
+    color: #1a2631;
+    box-shadow: 0 4px #6fa32e;
+}
+.btn-quit:active {
+    transform: translateY(2px);
+    box-shadow: 0 2px #6fa32e;
+}

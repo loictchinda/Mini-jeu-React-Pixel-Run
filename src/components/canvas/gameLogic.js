@@ -5,11 +5,15 @@ let gameRunning = true;
 let animationFrameId = null;
 let inputEnabled = false;
 let currentSpeed = 4; 
+let isGamePaused = false;
 
 const laneYPositions = [295, 390, 490];
 const laneHeight = 60;
 const runnerHeight = 100;
 
+export function setGamePaused(statut) {
+    isGamePaused = statut;
+}
 
 export function setGameSpeed(speed) {
   currentSpeed = speed;
@@ -24,7 +28,7 @@ export function updateOnAnswerCallback(newOnAnswerCallback) {
 }
 
 export function handleCanvasClick(x, y) {
-  if (!onAnswerCallback || !gameRunning || !inputEnabled) return;
+  if (!onAnswerCallback || !gameRunning || !inputEnabled || isGamePaused) return;
 
   for (let i = 0; i < laneYPositions.length; i++) {
     const laneY = laneYPositions[i];
@@ -36,7 +40,7 @@ export function handleCanvasClick(x, y) {
 }
 //Se déplacer avec les touches du clavier
 function handleKeyDown(event) {
-  if (!gameRunning) return;
+  if (!gameRunning || isGamePaused) return;
 
   switch (event.key) {
     case "ArrowUp":
@@ -67,6 +71,7 @@ export function stopGame() {
 }
 
 export function startGame(canvas, ctx, question, onAnswerChosen) {
+  isGamePaused = false;
   gameRunning = true;
   onAnswerCallback = onAnswerChosen;
   
@@ -181,12 +186,14 @@ ctx.stroke();
       ctx.clearRect(0, 0, canvas.width, canvas.height);
 
      
-      if (gameRunning) {
+      if (gameRunning && !isGamePaused) {
         
         trackOffset += currentSpeed; 
         if (trackOffset >= track.width) {
              trackOffset -= track.width; 
         }
+        // Animation des jambes
+      frameIndex = (frameIndex + (currentSpeed * 0.05)) % frames.length;
       }
       
       // Dessin de la Piste 
@@ -201,9 +208,7 @@ ctx.stroke();
         ctx.drawImage(currentFrame, 150, runnerY, 100, runnerHeight);
       }
 
-      // Animation des jambes
-      frameIndex = (frameIndex + (currentSpeed * 0.05)) % frames.length;
-
+    
       drawAnswers();
 
       animationFrameId = requestAnimationFrame(gameLoop);
