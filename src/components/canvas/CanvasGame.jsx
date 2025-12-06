@@ -23,18 +23,14 @@ export default function CanvasGame({ question, onAnswerChosen, isGameOver, score
       canvas.removeEventListener("click", clickHandler);
       stopGame();
     };
-  // eslint-disable-next-line react-hooks/exhaustive-deps
+ 
   }, []);
 
   // Gestion de la vitesse basée sur le score
   useEffect(() => {
 
-    console.log("Score actuel (Type):", typeof score);
-    console.log("Score actuel (Valeur):", score);
-    
-   
     const safeScore = (typeof score === 'number' && !isNaN(score)) ? score : 0;
-    // Vitesse de base 4, +1 tous les 2 points
+    
     const newSpeed = 4 + Math.floor(score / 2);
    
     const cappedSpeed = Math.min(newSpeed, 12);
