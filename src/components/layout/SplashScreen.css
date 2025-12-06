@@ -15,7 +15,7 @@
 
 .splash-title {
     /* Nouvelle police Orbitron */
-    font-family: 'Orbitron', sans-serif;
+    font-family: 'Technos', sans-serif; 
     font-size: 4rem;
     font-weight: 700;
     color: white;
@@ -46,7 +46,7 @@
 }
 
 .loading-text {
-    font-family: 'Montserrat', sans-serif;
+    font-family: 'JetBrains Mono', monospace; 
     font-size: 0.8rem;
     color: #bdc3c7;
     margin-top: 10px;

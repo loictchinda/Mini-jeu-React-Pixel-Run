@@ -1,6 +1,9 @@
-@import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&display=swap');
 
-/* Le reste de ton CSS habituel suit en dessous... */
+@font-face {
+  font-family: 'Technos'; 
+  src: url('../../assets/technos/Technos.otf') format('opentype'); 
+  font-style: normal;
+}
 body {
     margin: 0;
     /* ... */

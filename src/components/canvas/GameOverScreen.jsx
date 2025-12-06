@@ -5,7 +5,7 @@ export default function GameOverScreen({ score, onRestart, onHome }) {
   const [highScore, setHighScore] = useState(0);
 
   useEffect(() => {
-    // Gestion du meilleur score
+    
     const stored = localStorage.getItem('quizzRunHighScore');
     const best = stored ? parseInt(stored, 10) : 0;
 

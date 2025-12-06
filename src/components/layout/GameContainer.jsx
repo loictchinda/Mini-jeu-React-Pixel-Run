@@ -3,7 +3,7 @@ import CanvasGame from "../canvas/CanvasGame";
 import HUDContainer from "../hud/HudContainer";
 import { fetchQuestion } from "../../game/QuizEngine";
 import GameOverScreen from "../canvas/GameOverScreen";
-import { audioManager } from "../../game/AudioManager"; // <--- IMPORT AJOUTÉ
+import { audioManager } from "../../game/AudioManager"; 
 
 export default function GameContainer({ category, onBackToMenu }) {
   const [question, setQuestion] = useState(null);
@@ -88,6 +88,7 @@ export default function GameContainer({ category, onBackToMenu }) {
       ) : (
         <>
           <CanvasGame
+            score={score} 
             question={question}
             onAnswerChosen={handleAnswerChosen}
             isGameOver={isGameOver}

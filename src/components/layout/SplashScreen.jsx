@@ -2,21 +2,21 @@ import React, { useEffect, useState } from 'react';
 import './SplashScreen.css';
 
 const ASSETS_TO_LOAD = [
-    '/src/assets/trackt.png',
+    '/src/assets/sol1.png',
     '/src/assets/Run_0.png',
-    // ... tes autres assets
+   
 ];
 
 export default function SplashScreen({ onLoaded }) {
     const [progress, setProgress] = useState(0);
 
     useEffect(() => {
-        const totalDuration = 4000; // 4 secondes minimum
-        const intervalTime = 50; // Mise à jour toutes les 50ms
+        const totalDuration = 4000; 
+        const intervalTime = 50; 
         const steps = totalDuration / intervalTime;
         let currentStep = 0;
 
-        // 1. Chargement réel des images (en arrière-plan)
+        //  Chargement réel des images (en arrière-plan)
         let imagesLoaded = 0;
         ASSETS_TO_LOAD.forEach((src) => {
             const img = new Image();
@@ -31,10 +31,10 @@ export default function SplashScreen({ onLoaded }) {
             const percentage = Math.min(Math.floor((currentStep / steps) * 100), 100);
             setProgress(percentage);
 
-            // Si le temps est écoulé ET que les images sont chargées (ou presque)
+            
             if (currentStep >= steps) {
                 clearInterval(timer);
-                // On attend une demi-seconde à 100% avant de lancer
+                
                 setTimeout(() => {
                     onLoaded();
                 }, 500);
@@ -46,7 +46,7 @@ export default function SplashScreen({ onLoaded }) {
 
     return (
         <div className="splash-screen">
-            <h1 className="splash-title">QUIZZ RUN</h1>
+            <h1 className="splash-title">QUIZ RUN</h1>
             <div className="loading-bar-container">
                 <div
                     className="loading-bar-fill"

@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import GameContainer from "./components/layout/GameContainer";
 import MainMenu from "./components/layout/MainMenu";
-import SplashScreen from "./components/layout/SplashScreen"; // Import du Splash
+import SplashScreen from "./components/layout/SplashScreen"; 
 import './App.css';
 
 function App() {
@@ -31,7 +31,7 @@ function App() {
         <SplashScreen onLoaded={handleLoadingComplete} />
       )}
 
-      {/* 2. Menu Principal */}
+      { /* 2. Menu Principal */}
       {appState === 'MENU' && (
         <MainMenu onStartGame={handleStartGame} />
       )}

@@ -1,19 +1,25 @@
 import React from 'react';
 import './MainMenu.css';
+import cultureIcon from '../../assets/culture.png';
+import sigmaIcon from '../../assets/sigma.png';
+import geoIcon from '../../assets/geo.png';
+import scienceIcon from '../../assets/science.png';
+import frenchIcon from '../../assets/french.png';
+import natureIcon from '../../assets/nature.png';
+
 
 export default function MainMenu({ onStartGame }) {
-    // On définit les couleurs spécifiques de la maquette ici
+    
     const categories = [
-        { id: 'general_knowledge', label: 'Culture G', color: '#3498db' }, // Bleu
-        { id: 'mathematics', label: 'Mathématiques', color: '#9b59b6' }, // Violet
-        { id: 'geography', label: 'Géographie', color: '#aed581' }, // Vert clair
-        { id: 'science', label: 'Sciences', color: '#1abc9c' }, // Turquoise
-        { id: 'books', label: 'Français', color: '#e91e63' }, // Rose
-        { id: 'nature', label: 'Nature', color: '#f1c40f' }, // Jaune
-    ];
+    { id: 'general_knowledge', label: 'Culture G', color: '#3498db', icon: cultureIcon },
+    { id: 'mathematics', label: 'Mathématiques', color: '#9b59b6', icon: sigmaIcon },
+    { id: 'geography', label: 'Géographie', color: '#aed581', icon: geoIcon },
+    { id: 'science', label: 'Sciences', color: '#1abc9c', icon: scienceIcon },
+    { id: 'books', label: 'Français', color: '#eb3773ff', icon: frenchIcon },
+    { id: 'nature', label: 'Nature', color: '#f1c40f', icon: natureIcon },
+];
 
-    // Note : Pour l'instant, je n'ai pas mis les icônes (ampoule, atome...) car il faudrait des fichiers SVG.
-    // On se concentre sur les couleurs et la forme des cartes.
+   
 
     return (
         <div className="main-menu-container">
@@ -25,11 +31,11 @@ export default function MainMenu({ onStartGame }) {
                         key={cat.id}
                         className="category-card"
                         onClick={() => onStartGame(cat.id)}
-                        // On applique la couleur directement ici
+                       
                         style={{ backgroundColor: cat.color }}
                     >
-                        {/* Espace pour une future icône */}
-                        <div className="card-icon-placeholder"></div>
+                       
+                        <img src={cat.icon} alt={cat.label} className="card-icon" />
                         <span className="card-label">{cat.label}</span>
                     </button>
                 ))}
