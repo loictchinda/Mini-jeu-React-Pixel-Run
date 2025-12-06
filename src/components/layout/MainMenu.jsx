@@ -2,43 +2,22 @@ import React from 'react';
 import './MainMenu.css';
 
 export default function MainMenu({ onStartGame }) {
+    // On définit les couleurs spécifiques de la maquette ici
     const categories = [
-        {
-            id: 'science',
-            label: 'Sciences',
-            image: 'https://images.unsplash.com/photo-1532094349884-543bc11b234d?auto=format&fit=crop&w=400&q=80'
-        },
-        {
-            id: 'geography',
-            label: 'Géographie',
-            image: 'https://images.unsplash.com/photo-1524661135-423995f22d0b?auto=format&fit=crop&w=400&q=80'
-        },
-        {
-            id: 'history',
-            label: 'Histoire',
-            image: 'https://images.unsplash.com/photo-1461360370896-922624d12aa1?auto=format&fit=crop&w=400&q=80'
-        },
-        {
-            id: 'general_knowledge',
-            label: 'Culture G.',
-            image: 'https://images.unsplash.com/photo-1457369804613-52c61a468e7d?auto=format&fit=crop&w=400&q=80'
-        },
-        {
-            id: 'sport_and_leisure',
-            label: 'Sports',
-            image: 'https://images.unsplash.com/photo-1461896836934-ffe607ba8211?auto=format&fit=crop&w=400&q=80'
-        },
-        {
-            id: 'music',
-            label: 'Musique',
-            image: 'https://images.unsplash.com/photo-1511671782779-c97d3d27a1d4?auto=format&fit=crop&w=400&q=80'
-        },
+        { id: 'general_knowledge', label: 'Culture G', color: '#3498db' }, // Bleu
+        { id: 'mathematics', label: 'Mathématiques', color: '#9b59b6' }, // Violet
+        { id: 'geography', label: 'Géographie', color: '#aed581' }, // Vert clair
+        { id: 'science', label: 'Sciences', color: '#1abc9c' }, // Turquoise
+        { id: 'books', label: 'Français', color: '#e91e63' }, // Rose
+        { id: 'nature', label: 'Nature', color: '#f1c40f' }, // Jaune
     ];
+
+    // Note : Pour l'instant, je n'ai pas mis les icônes (ampoule, atome...) car il faudrait des fichiers SVG.
+    // On se concentre sur les couleurs et la forme des cartes.
 
     return (
         <div className="main-menu-container">
-            <h1 className="game-title">QUIZZ RUN</h1>
-            <p className="subtitle">Choisis ta mission :</p>
+            <h1 className="game-title">CATEGORIES</h1>
 
             <div className="categories-grid">
                 {categories.map((cat) => (
@@ -46,9 +25,12 @@ export default function MainMenu({ onStartGame }) {
                         key={cat.id}
                         className="category-card"
                         onClick={() => onStartGame(cat.id)}
-                        style={{ backgroundImage: `linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.7)), url(${cat.image})` }}
+                        // On applique la couleur directement ici
+                        style={{ backgroundColor: cat.color }}
                     >
-                        <span>{cat.label}</span>
+                        {/* Espace pour une future icône */}
+                        <div className="card-icon-placeholder"></div>
+                        <span className="card-label">{cat.label}</span>
                     </button>
                 ))}
             </div>

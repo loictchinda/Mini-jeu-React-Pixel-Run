@@ -1,103 +1,89 @@
-/* L'arrière-plan qui couvre TOUT l'écran */
 .game-over-overlay {
-  position: fixed; /* Force l'affichage par dessus tout */
+  position: fixed;
   top: 0;
   left: 0;
   width: 100vw;
   height: 100vh;
-  background-color: rgba(0, 0, 0, 0.85); /* Fond très sombre */
-  backdrop-filter: blur(5px); /* Effet de flou moderne */
+  /* Image de fond cartoon (lien temporaire, tu pourras mettre ton image locale plus tard) */
+  background-image: url('https://i.imgur.com/Dk5613O.png');
+  background-size: cover;
+  background-position: center;
   display: flex;
-  justify-content: center;
+  flex-direction: column;
+  justify-content: flex-start;
   align-items: center;
-  z-index: 9999; /* Toujours au premier plan */
-  font-family: 'Press Start 2P', cursive;
+  z-index: 9999;
+  padding-top: 50px;
 }
 
-/* La boîte de contenu */
-.game-over-card {
-  background: linear-gradient(145deg, #2c3e50, #34495e);
-  border: 4px solid #ecf0f1;
-  border-radius: 20px;
-  padding: 40px;
-  text-align: center;
-  box-shadow: 0 0 30px rgba(0, 170, 255, 0.5); /* Lueur bleue */
-  max-width: 500px;
-  width: 90%;
-  animation: slideIn 0.5s ease-out;
-}
-
-/* Titre */
+/* Titre GAME OVER style maquette */
 .game-over-title {
-  font-size: 2.5rem;
-  color: #e74c3c;
-  margin: 0 0 20px 0;
-  text-shadow: 4px 4px 0 #000;
-  text-transform: uppercase;
+  font-family: 'Orbitron', sans-serif;
+  font-size: 5rem;
+  color: white;
+  margin: 0 0 50px 0;
+  /* Astuce pour le contour rouge autour du texte */
+  -webkit-text-stroke: 3px #c0392b;
+  text-shadow: 5px 5px 0 #c0392b;
+  letter-spacing: 5px;
 }
 
-/* Scores */
+/* La carte effet "verre" */
+.game-over-card {
+  /* Fond semi-transparent blanc */
+  background: rgba(255, 255, 255, 0.15);
+  /* Effet de flou sur l'arrière-plan */
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  border-radius: 20px;
+  padding: 40px 60px;
+  text-align: left;
+  width: 400px;
+  box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.2);
+}
+
 .score-section {
-  background: rgba(0, 0, 0, 0.3);
-  padding: 20px;
-  border-radius: 10px;
   margin-bottom: 30px;
-  border: 2px dashed #7f8c8d;
+  font-family: 'Montserrat', sans-serif;
+  color: white;
 }
 
-.score-text {
-  color: #f1c40f;
-  font-size: 1.2rem;
-  margin: 10px 0;
-}
-
+.score-text,
 .highscore-text {
-  color: #bdc3c7;
-  font-size: 0.8rem;
-  margin-top: 5px;
+  font-size: 1.2rem;
+  margin: 15px 0;
+  font-weight: 500;
 }
 
-/* Boutons */
 .actions {
   display: flex;
   flex-direction: column;
   gap: 15px;
 }
 
+/* Style des boutons verts arrondis */
 .btn-action {
-  font-family: 'Press Start 2P', cursive;
+  font-family: 'Orbitron', sans-serif;
   padding: 15px;
   font-size: 1rem;
   border: none;
-  border-radius: 8px;
+  /* Coins très arrondis */
+  border-radius: 50px;
   cursor: pointer;
   color: white;
-  transition: all 0.2s;
   text-transform: uppercase;
-  box-shadow: 0 4px 0 #000;
+  /* Couleur verte de la maquette */
+  background-color: #8bc34a;
+  box-shadow: 0 4px #6b9b37;
+  transition: all 0.1s;
+}
+
+.btn-action:hover {
+  background-color: #9ccc65;
 }
 
 .btn-action:active {
   transform: translateY(4px);
-  box-shadow: 0 0 0 #000;
-}
-
-.btn-restart {
-  background-color: #2ecc71; /* Vert */
-}
-.btn-restart:hover {
-  background-color: #27ae60;
-}
-
-.btn-home {
-  background-color: #e67e22; /* Orange */
-}
-.btn-home:hover {
-  background-color: #d35400;
-}
-
-/* Animation d'entrée */
-@keyframes slideIn {
-  from { transform: translateY(-50px); opacity: 0; }
-  to { transform: translateY(0); opacity: 1; }
+  box-shadow: none;
 }
