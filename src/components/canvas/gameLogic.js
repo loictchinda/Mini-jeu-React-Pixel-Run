@@ -3,11 +3,17 @@ let onAnswerCallback = null;
 let currentPlayerLane = 1; // 0: top, 1: middle, 2: bottom
 let gameRunning = true;
 let animationFrameId = null;
+let inputEnabled = false;
+let currentSpeed = 4; // Vitesse de base
 
-// Definit les positions des coulloirs et du coureur
-const laneYPositions = [300, 410, 530]; 
-const laneHeight = 60; 
+const laneYPositions = [295, 380, 460];
+const laneHeight = 60;
 const runnerHeight = 100;
+
+// --- NOUVELLE FONCTION ---
+export function setGameSpeed(speed) {
+  currentSpeed = speed;
+}
 
 export function updateQuestion(newQuestion) {
   currentQuestion = newQuestion;
@@ -17,11 +23,9 @@ export function updateOnAnswerCallback(newOnAnswerCallback) {
   onAnswerCallback = newOnAnswerCallback;
 }
 
-//Surtout utile pour la version mobile
 export function handleCanvasClick(x, y) {
-  if (!onAnswerCallback) return;
+  if (!onAnswerCallback || !gameRunning || !inputEnabled) return;
 
-  // Check if the click was on one of the lanes
   for (let i = 0; i < laneYPositions.length; i++) {
     const laneY = laneYPositions[i];
     if (y > laneY - laneHeight / 2 && y < laneY + laneHeight / 2) {
@@ -130,23 +134,31 @@ export function startGame(canvas, ctx, question, onAnswerChosen) {
     }
 
     function gameLoop() {
+      if (!gameRunning) return;
+
       ctx.clearRect(0, 0, canvas.width, canvas.height);
 
-      // Piste
+      // --- UTILISATION DE currentSpeed ---
       if (gameRunning) {
-        trackOffset += 4;
+        trackOffset += currentSpeed; // Vitesse variable
         if (trackOffset >= track.width) trackOffset = 0;
       }
-      ctx.drawImage(track, -trackOffset,240);
-      ctx.drawImage(track, track.width - trackOffset, 240);
+
+      if (track.complete) {
+        ctx.drawImage(track, -trackOffset, 240);
+        ctx.drawImage(track, track.width - trackOffset, 240);
+      }
 
       // Coureur
-      const currentFrame = frames[Math.floor(frameIndex)];
-      const runnerY = laneYPositions[currentPlayerLane] - runnerHeight / 2;
-      ctx.drawImage(currentFrame, 150, runnerY, 100, runnerHeight);
+      if (frames.length > 0 && frames[Math.floor(frameIndex)] && frames[Math.floor(frameIndex)].complete) {
+        const currentFrame = frames[Math.floor(frameIndex)];
+        const runnerY = laneYPositions[currentPlayerLane] - runnerHeight / 2;
+        ctx.drawImage(currentFrame, 150, runnerY, 100, runnerHeight);
+      }
 
       if (gameRunning) {
-        frameIndex = (frameIndex + 0.2) % frames.length;
+        // L'animation des jambes accélère un peu aussi avec la vitesse
+        frameIndex = (frameIndex + (currentSpeed * 0.05)) % frames.length;
       }
 
       drawAnswers();

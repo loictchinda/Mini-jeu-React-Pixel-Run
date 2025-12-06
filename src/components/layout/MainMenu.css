@@ -1,0 +1,67 @@
+.main-menu-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    width: 100vw;
+    /* Fond bleu foncé uni */
+    background-color: #1a1a40;
+}
+
+.game-title {
+    /* Police Orbitron, blanche, en majuscules */
+    font-family: 'Orbitron', sans-serif;
+    font-size: 3rem;
+    color: white;
+    text-transform: uppercase;
+    letter-spacing: 5px;
+    margin-bottom: 40px;
+    text-shadow: none;
+}
+
+.categories-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    /* 2 colonnes comme sur la maquette */
+    gap: 25px;
+    max-width: 800px;
+    padding: 20px;
+}
+
+.category-card {
+    width: 220px;
+    height: 140px;
+    border: none;
+    /* Coins très arrondis */
+    border-radius: 20px;
+    cursor: pointer;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    transition: transform 0.2s;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+}
+
+.category-card:hover {
+    transform: translateY(-5px);
+}
+
+/* Style du texte dans les cartes */
+.card-label {
+    font-family: 'Montserrat', sans-serif;
+    color: white;
+    font-size: 1.1rem;
+    font-weight: 600;
+    margin-top: 10px;
+}
+
+/* Placeholder pour les icônes si tu veux en ajouter plus tard */
+.card-icon-placeholder {
+    width: 40px;
+    height: 40px;
+    background-color: rgba(255, 255, 255, 0.2);
+    border-radius: 50%;
+    margin-bottom: 10px;
+}

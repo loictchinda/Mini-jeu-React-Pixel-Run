@@ -45,4 +45,92 @@
 
 .game-over-container button:hover {
   background-color: #07386d;
+.game-over-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  /* Image de fond cartoon (lien temporaire, tu pourras mettre ton image locale plus tard) */
+  background-image: url('https://i.imgur.com/Dk5613O.png');
+  background-size: cover;
+  background-position: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+  z-index: 9999;
+  padding-top: 50px;
+}
+
+/* Titre GAME OVER style maquette */
+.game-over-title {
+  font-family: 'Orbitron', sans-serif;
+  font-size: 5rem;
+  color: white;
+  margin: 0 0 50px 0;
+  /* Astuce pour le contour rouge autour du texte */
+  -webkit-text-stroke: 3px #c0392b;
+  text-shadow: 5px 5px 0 #c0392b;
+  letter-spacing: 5px;
+}
+
+/* La carte effet "verre" */
+.game-over-card {
+  /* Fond semi-transparent blanc */
+  background: rgba(255, 255, 255, 0.15);
+  /* Effet de flou sur l'arrière-plan */
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  border-radius: 20px;
+  padding: 40px 60px;
+  text-align: left;
+  width: 400px;
+  box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.2);
+}
+
+.score-section {
+  margin-bottom: 30px;
+  font-family: 'Montserrat', sans-serif;
+  color: white;
+}
+
+.score-text,
+.highscore-text {
+  font-size: 1.2rem;
+  margin: 15px 0;
+  font-weight: 500;
+}
+
+.actions {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+/* Style des boutons verts arrondis */
+.btn-action {
+  font-family: 'Orbitron', sans-serif;
+  padding: 15px;
+  font-size: 1rem;
+  border: none;
+  /* Coins très arrondis */
+  border-radius: 50px;
+  cursor: pointer;
+  color: white;
+  text-transform: uppercase;
+  /* Couleur verte de la maquette */
+  background-color: #8bc34a;
+  box-shadow: 0 4px #6b9b37;
+  transition: all 0.1s;
+}
+
+.btn-action:hover {
+  background-color: #9ccc65;
+}
+
+.btn-action:active {
+  transform: translateY(4px);
+  box-shadow: none;
 }

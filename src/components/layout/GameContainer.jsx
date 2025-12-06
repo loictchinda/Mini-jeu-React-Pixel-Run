@@ -3,30 +3,51 @@ import CanvasGame from "../canvas/CanvasGame";
 import HUDContainer from "../hud/HudContainer";
 import { fetchQuestion } from "../../game/QuizEngine";
 import GameOverScreen from "../canvas/GameOverScreen";
+import { audioManager } from "../../game/AudioManager"; // <--- IMPORT AJOUTÉ
 
-export default function GameContainer() {
+export default function GameContainer({ category, onBackToMenu }) {
   const [question, setQuestion] = useState(null);
   const [score, setScore] = useState(0);
   const [isGameOver, setIsGameOver] = useState(false);
 
+  // Gestion de la Musique de fond
   useEffect(() => {
-    async function loadQuestion() {
-      const q = await fetchQuestion();
-      setQuestion(q);
+    // Si le jeu tourne et qu'on n'a pas perdu, on lance la musique
+    if (!isGameOver) {
+      audioManager.playMusic();
+    } else {
+      audioManager.stopMusic();
     }
 
+    // Nettoyage : Si on quitte le composant (retour menu), on coupe le son
+    return () => {
+      audioManager.stopMusic();
+    };
+  }, [isGameOver]);
+
+  useEffect(() => {
+    async function loadQuestion() {
+      setQuestion(null); 
+      const q = await fetchQuestion(category);
+      setQuestion(q);
+    }
     loadQuestion();
-  }, []);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []); 
 
   const handleAnswerChosen = (index) => {
     if (isGameOver || !question) return;
 
     if (index === question.correctIndex) {
+      // --- SON VICTOIRE ---
+      audioManager.playCorrect();
+      
       setScore((prev) => prev + 1);
-     
-      fetchQuestion().then((q) => setQuestion(q));
+      fetchQuestion(category).then((q) => setQuestion(q));
     } else {
-     
+      // --- SON DÉFAITE ---
+      audioManager.playWrong();
+      
       setIsGameOver(true);
     }
   };
@@ -34,13 +55,36 @@ export default function GameContainer() {
   const handleRestart = () => {
     setIsGameOver(false);
     setScore(0);
-    fetchQuestion().then((q) => setQuestion(q));
+    setQuestion(null);
+    fetchQuestion(category).then((q) => setQuestion(q));
+    // La musique redémarrera automatiquement grâce au useEffect qui surveille isGameOver
   };
+
+  // Écran de chargement interne
+  if (!question && !isGameOver) {
+    return (
+      <div style={{ 
+        display: 'flex', 
+        justifyContent: 'center', 
+        alignItems: 'center', 
+        height: '100vh', 
+        color: 'white',
+        fontFamily: "'Press Start 2P', cursive",
+        fontSize: '20px'
+      }}>
+        CHARGEMENT...
+      </div>
+    );
+  }
 
   return (
     <div style={{ position: "relative" }}>
       {isGameOver ? (
-        <GameOverScreen score={score} onRestart={handleRestart} />
+        <GameOverScreen 
+            score={score} 
+            onRestart={handleRestart} 
+            onHome={onBackToMenu} 
+        />
       ) : (
         <>
           <CanvasGame
