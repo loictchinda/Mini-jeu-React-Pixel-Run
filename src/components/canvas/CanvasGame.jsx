@@ -21,12 +21,6 @@ export default function CanvasGame({ question, onAnswerChosen, isGameOver, score
 
     return () => {
       canvas.removeEventListener("click", clickHandler);
-<<<<<<< HEAD
-    };
-  }, []);
-
-  // Effect for updating the question when it changes
-=======
       stopGame();
     };
   // eslint-disable-next-line react-hooks/exhaustive-deps
@@ -42,23 +36,16 @@ export default function CanvasGame({ question, onAnswerChosen, isGameOver, score
     setGameSpeed(cappedSpeed);
   }, [score]);
 
->>>>>>> 9ee8332f52748e6ca1d9420cc50c9548a4593792
   useEffect(() => {
     updateQuestion(question);
   }, [question]);
 
-<<<<<<< HEAD
   // Effect to update the callback function
-=======
->>>>>>> 9ee8332f52748e6ca1d9420cc50c9548a4593792
   useEffect(() => {
     updateOnAnswerCallback(onAnswerChosen);
   }, [onAnswerChosen]);
 
-<<<<<<< HEAD
   // Effect to stop the game
-=======
->>>>>>> 9ee8332f52748e6ca1d9420cc50c9548a4593792
   useEffect(() => {
     if (isGameOver) {
       stopGame();
@@ -68,18 +55,9 @@ export default function CanvasGame({ question, onAnswerChosen, isGameOver, score
   return (
     <canvas
       ref={canvasRef}
-<<<<<<< HEAD
       width={1500}
       height={570}
       className="game-canvas"
     />
   );
 }
-=======
-      width={1250}
-      height={500}
-      className="game-canvas"
-    />
-  );
-}
->>>>>>> 9ee8332f52748e6ca1d9420cc50c9548a4593792
