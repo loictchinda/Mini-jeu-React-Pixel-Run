@@ -26,7 +26,7 @@ export async function fetchQuestion(category = "general_knowledge") {
       throw new Error("Aucune question reçue de l'API");
     }
 
-    // Bonne réponse
+    
     const correct = q.correctAnswer;
 
     // Choisir seulement 2 mauvaises réponses
@@ -41,17 +41,17 @@ export async function fetchQuestion(category = "general_knowledge") {
     // Mise à jour de l'état global (si utilisé ailleurs)
     gameState.setQuestion(q.question, options, correctIndex);
 
-    // On retourne l'objet complet
+    
     return {
       question: q.question,
       options,
       correctIndex,
-      category: q.category // <--- AJOUT IMPORTANT : Permet d'afficher la catégorie dans le HUD
+      category: q.category 
     };
 
   } catch (err) {
     console.error("Erreur API Trivia :", err);
-    // En cas d'erreur, on renvoie une question de secours pour ne pas planter le jeu
+   
     return {
       question: "Erreur de chargement. Prêt ?",
       options: ["Oui", "Non", "Peut-être"],

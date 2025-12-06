@@ -10,7 +10,7 @@ const laneYPositions = [295, 390, 490];
 const laneHeight = 60;
 const runnerHeight = 100;
 
-// --- NOUVELLE FONCTION ---
+
 export function setGameSpeed(speed) {
   currentSpeed = speed;
 }
@@ -70,7 +70,7 @@ export function startGame(canvas, ctx, question, onAnswerChosen) {
   gameRunning = true;
   onAnswerCallback = onAnswerChosen;
   
-  //  Images et variables de chargement ---
+  //  Images et variables de chargement 
   const track = new Image();
  
   track.src = "/src/assets/sol1.png"; 
@@ -87,7 +87,7 @@ export function startGame(canvas, ctx, question, onAnswerChosen) {
     }
   };
 
-  //  Chargement des Cadres du Coureur ---
+  //  Chargement des Cadres du Coureur 
   for (let i = 0; i <= 14; i++) {
     const img = new Image();
     img.src = `/src/assets/Run_${i}.png`; 
@@ -101,7 +101,7 @@ export function startGame(canvas, ctx, question, onAnswerChosen) {
     frames.push(img);
   }
 
-  //  Chargement de la Piste (Track) ---
+  //  Chargement de la Piste (Track) 
   track.onload = () => {
     currentQuestion = question;
     checkAndStartLoop();
@@ -114,7 +114,7 @@ export function startGame(canvas, ctx, question, onAnswerChosen) {
 
   window.addEventListener('keydown', handleKeyDown);
 
-  //--- 4. Fonction de boucle de jeu ---
+  // Fonction de boucle de jeu 
   function startLoop() {
     let frameIndex = 0;
     let trackOffset = 0;
@@ -198,7 +198,6 @@ ctx.stroke();
       
       if (currentFrame) { 
         const runnerY = laneYPositions[currentPlayerLane] - runnerHeight / 2;
-        // Position du coureur (150 en X, et Y basé sur la voie)
         ctx.drawImage(currentFrame, 150, runnerY, 100, runnerHeight);
       }
 

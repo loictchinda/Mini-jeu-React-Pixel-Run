@@ -32,20 +32,20 @@ export default function GameContainer({ category, onBackToMenu }) {
       setQuestion(q);
     }
     loadQuestion();
-    // eslint-disable-next-line react-hooks/exhaustive-deps
+   
   }, []); 
 
   const handleAnswerChosen = (index) => {
     if (isGameOver || !question) return;
 
     if (index === question.correctIndex) {
-      // --- SON VICTOIRE ---
+     -
       audioManager.playCorrect();
       
       setScore((prev) => prev + 1);
       fetchQuestion(category).then((q) => setQuestion(q));
     } else {
-      // --- SON DÉFAITE ---
+     
       audioManager.playWrong();
       
       setIsGameOver(true);

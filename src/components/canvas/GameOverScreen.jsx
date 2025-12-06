@@ -29,11 +29,11 @@ export default function GameOverScreen({ score, onRestart, onHome }) {
 
         <div className="actions">
           <button className="btn-action btn-restart" onClick={onRestart}>
-            🔄 Rejouer
+             Rejouer
           </button>
           
           <button className="btn-action btn-home" onClick={onHome}>
-            🏠 Menu Principal
+             Menu Principal
           </button>
         </div>
       </div>
