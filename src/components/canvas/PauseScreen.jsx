@@ -5,7 +5,7 @@ export default function PauseScreen({ onResume, onQuit }) {
     return (
         <div className="pause-overlay">
             <div className="pause-box">
-                <h2 className="pause-title">Votre jeu est en pause</h2>
+                <h2 className="pause-title">PAUSE</h2>
 
                 <button className="pause-btn btn-resume" onClick={onResume}>
                     Continuer

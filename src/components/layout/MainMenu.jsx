@@ -15,7 +15,7 @@ export default function MainMenu({ onStartGame }) {
     { id: 'mathematics', label: 'Mathématiques', color: '#9b59b6', icon: sigmaIcon },
     { id: 'geography', label: 'Géographie', color: '#aed581', icon: geoIcon },
     { id: 'science', label: 'Sciences', color: '#1abc9c', icon: scienceIcon },
-    { id: 'books', label: 'Français', color: '#eb3773ff', icon: frenchIcon },
+    { id: 'Literature', label: 'Littérature', color: '#eb3773ff', icon: frenchIcon },
     { id: 'nature', label: 'Nature', color: '#f1c40f', icon: natureIcon },
 ];
 

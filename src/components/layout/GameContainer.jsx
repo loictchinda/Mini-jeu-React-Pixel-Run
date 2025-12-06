@@ -86,7 +86,7 @@ export default function GameContainer({ category, onBackToMenu }) {
         alignItems: 'center', 
         height: '100vh', 
         color: 'white',
-        fontFamily: "'Press Start 2P', cursive",
+        fontFamily: "'JetBrains Mono', monospace",
         fontSize: '20px'
       }}>
         CHARGEMENT...

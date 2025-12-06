@@ -12,7 +12,7 @@ function shuffle(array) {
  * Récupère une question depuis Trivia API
  * @param {string} category - L'identifiant de la catégorie (ex: 'history', 'science')
  */
-export async function fetchQuestion(category = "general_knowledge") {
+export async function fetchQuestion(category) {
   try {
     // Construction de l'URL avec la catégorie dynamique
     const url = `${TRIVIA_URL}?categories=${category}&limit=1`;
