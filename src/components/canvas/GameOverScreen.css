@@ -1,8 +1,4 @@
-@font-face {
-  font-family: 'Technos'; 
-  src: url('../../assets/technos/Technos.otf') format('opentype'); 
-  font-style: normal;
-}
+
 .game-over-container {
   position: absolute;
   left: 0;
