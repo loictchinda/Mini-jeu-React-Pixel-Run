@@ -96,12 +96,12 @@ export default function GameContainer({ category, onBackToMenu }) {
       };
   
     /**
-     * Gère l'action de "Quitter" depuis l'écran de pause, ce qui met fin à la partie.
+     * Gère l'action de "Quitter" depuis l'écran de pause pour retourner au menu principal.
      */
     const handleQuit = () => {
         setGamePaused(false); 
         setIsPaused(false);  
-        setIsGameOver(true);  
+        onBackToMenu();
       };
 
   // Écran de chargement interne
