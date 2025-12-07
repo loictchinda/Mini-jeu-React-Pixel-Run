@@ -8,8 +8,17 @@ import frenchIcon from '../../assets/french.png';
 import natureIcon from '../../assets/nature.png';
 
 
+/**
+ * Affiche le menu principal du jeu où le joueur peut choisir une catégorie de quiz.
+ *
+ * @param {object} props - Les propriétés du composant.
+ * @param {Function} props.onStartGame - La fonction de rappel à exécuter lorsqu'une catégorie est sélectionnée.
+ *                                       Elle reçoit l'ID de la catégorie en argument.
+ * @returns {JSX.Element} Le composant du menu principal.
+ */
 export default function MainMenu({ onStartGame }) {
     
+    /** @type {Array<object>} La liste des catégories de jeu disponibles. */
     const categories = [
     { id: 'general_knowledge', label: 'Culture G', color: '#3498db', icon: cultureIcon },
     { id: 'mathematics', label: 'Mathématiques', color: '#9b59b6', icon: sigmaIcon },

@@ -1,3 +1,9 @@
+/**
+ * Feuille de style pour le composant SplashScreen.
+ * Elle définit l'apparence de l'écran de chargement, y compris
+ * le titre, la barre de progression et le texte d'information.
+ */
+
 .splash-screen {
     position: fixed;
     top: 0;

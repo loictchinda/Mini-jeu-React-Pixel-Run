@@ -7,30 +7,43 @@ import { audioManager } from "../../game/AudioManager";
 import PauseScreen from "../canvas/PauseScreen";
 import { setGamePaused } from "../canvas/gameLogic";
 
+/**
+ * Composant principal qui orchestre une session de jeu.
+ * Il gère l'état du jeu (score, question, fin de partie, pause),
+ * charge les questions, et affiche les écrans appropriés (jeu, pause, game over).
+ *
+ * @param {object} props - Les propriétés du composant.
+ * @param {string} props.category - La catégorie de questions choisie pour la partie.
+ * @param {Function} props.onBackToMenu - La fonction de rappel pour retourner au menu principal.
+ * @returns {JSX.Element} Le conteneur de jeu.
+ */
 export default function GameContainer({ category, onBackToMenu }) {
+  /** @type {[object | null, Function]} L'état pour la question actuelle. */
   const [question, setQuestion] = useState(null);
+  /** @type {[number, Function]} L'état pour le score du joueur. */
   const [score, setScore] = useState(0);
+  /** @type {[boolean, Function]} L'état pour indiquer si la partie est terminée. */
   const [isGameOver, setIsGameOver] = useState(false);
+  /** @type {[boolean, Function]} L'état pour indiquer si le jeu est en pause. */
   const [isPaused, setIsPaused] = useState(false);
 
-  // Gestion de la Musique de fond
+  // Gère la musique de fond : la joue pendant la partie et l'arrête à la fin ou au retour au menu.
   useEffect(() => {
-    // Si le jeu tourne et qu'on n'a pas perdu, on lance la musique
     if (!isGameOver) {
       audioManager.playMusic();
     } else {
       audioManager.stopMusic();
     }
 
-    // Nettoyage : Si on quitte le composant (retour menu), on coupe le son
+    // Nettoyage : coupe la musique si le composant est démonté (ex: retour au menu).
     return () => {
       audioManager.stopMusic();
     };
   }, [isGameOver]);
 
+  // Charge la première question au démarrage du jeu.
   useEffect(() => {
     async function loadQuestion() {
-      setQuestion(null); 
       const q = await fetchQuestion(category);
       setQuestion(q);
     }
@@ -38,6 +51,12 @@ export default function GameContainer({ category, onBackToMenu }) {
    
   }, []); 
 
+  /**
+   * Gère la sélection d'une réponse par le joueur.
+   * Si la réponse est correcte, augmente le score et charge une nouvelle question.
+   * Si elle est incorrecte, déclenche la fin de la partie.
+   * @param {number} index - L'index de l'option de réponse choisie.
+   */
   const handleAnswerChosen = (index) => {
     if (isGameOver || !question || isPaused) return;
 
@@ -55,6 +74,9 @@ export default function GameContainer({ category, onBackToMenu }) {
     }
   };
 
+  /**
+   * Réinitialise l'état du jeu pour commencer une nouvelle partie.
+   */
   const handleRestart = () => {
     setIsGameOver(false);
     setGamePaused(false);
@@ -64,13 +86,18 @@ export default function GameContainer({ category, onBackToMenu }) {
     // La musique redémarrera automatiquement grâce au useEffect qui surveille isGameOver
   };
 
+    /**
+     * Met le jeu en pause ou le reprend.
+     */
     const togglePause = () => {
         const nouveauStatut = !isPaused;
         setIsPaused(nouveauStatut);    
         setGamePaused(nouveauStatut);   
       };
   
-   
+    /**
+     * Gère l'action de "Quitter" depuis l'écran de pause, ce qui met fin à la partie.
+     */
     const handleQuit = () => {
         setGamePaused(false); 
         setIsPaused(false);  

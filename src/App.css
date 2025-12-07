@@ -1,3 +1,9 @@
+/**
+ * Feuille de style globale pour l'application.
+ * Elle définit les styles de base pour l'élément `body`,
+ * notamment l'image de fond et le comportement de la mise en page.
+ */
+
 body {
   margin: 0;
   background-image: url("./assets/Lotus.jpg"); 
@@ -9,4 +15,3 @@ body {
   min-height: 100vh;
   overflow: hidden;
 }
-

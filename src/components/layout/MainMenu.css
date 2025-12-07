@@ -1,3 +1,9 @@
+/**
+ * Feuille de style pour le composant MainMenu.
+ * Elle définit la mise en page et l'apparence de l'écran de sélection des catégories,
+ * y compris la grille des catégories, les cartes interactives et la typographie.
+ */
+
 .main-menu-container {
     display: flex;
     flex-direction: column;

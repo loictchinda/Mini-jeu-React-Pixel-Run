@@ -1,17 +1,32 @@
+/**
+ * .pause-overlay
+ * Style le conteneur principal de l'écran de pause qui recouvre tout le jeu.
+ * - `position: absolute`: Le positionne par-dessus le canvas du jeu.
+ * - `background-color`: Applique un fond noir semi-transparent pour assombrir le jeu.
+ * - `display: flex`: Centre la boîte de pause verticalement et horizontalement.
+ * - `z-index: 100`: S'assure qu'il est au-dessus de tous les autres éléments du jeu.
+ * - `backdrop-filter: blur(2px)`: Applique un léger flou à tout ce qui se trouve derrière l'overlay.
+ */
 .pause-overlay {
     position: absolute;
     top: 0;
     left: 0;
     width: 100%;
     height: 100%;
-    background-color: rgba(0, 0, 0, 0.4); 
+    background-color: rgba(0, 0, 0, 0.4);
     display: flex;
-    justify-content: center; 
-    align-items: center;     
-    z-index: 100;            
-    backdrop-filter: blur(2px); 
+    justify-content: center;
+    align-items: center;
+    z-index: 100;
+    backdrop-filter: blur(2px);
 }
 
+/**
+ * .pause-box
+ * Style la boîte centrale qui contient le titre et les boutons de l'écran de pause.
+ * Crée un effet de "verre dépoli" (glassmorphism) avec un fond dégradé semi-transparent,
+ * une bordure subtile, une ombre portée et un flou d'arrière-plan plus prononcé.
+ */
 .pause-box {
     background: linear-gradient(
             135deg,
@@ -24,7 +39,7 @@
     border: 1px solid rgba(255, 255, 255, 0.2);
     box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
     backdrop-filter: blur(10px); 
-    -webkit-backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px); /* Pour la compatibilité avec Safari */
     font-family: 'Technos', sans-serif; 
     min-width: 300px;
     display: flex; 
@@ -34,6 +49,10 @@
     text-align: center;
 }
 
+/**
+ * .pause-title
+ * Style le titre "PAUSE" à l'intérieur de la boîte.
+ */
 .pause-title {
     margin-top: 0;
     margin-bottom: 30px;
@@ -42,7 +61,11 @@
     letter-spacing: 1px;
 }
 
-
+/**
+ * .pause-btn
+ * Style de base commun aux boutons "Reprendre" et "Quitter".
+ * Définit la police, la taille, les bordures arrondies et les transitions pour les effets au survol/clic.
+ */
 .pause-btn {
     font-family: 'JetBrains Mono', monospace; 
     display: block;
@@ -60,7 +83,11 @@
    
 }
 
-
+/**
+ * .btn-resume
+ * Style spécifique pour le bouton "Reprendre".
+ * Lui donne une couleur de fond verte et une ombre portée pour un effet 3D.
+ */
 .btn-resume {
     background-color: #A1D161;
     color: #ffffff;
@@ -68,18 +95,29 @@
   
     
 }
+/**
+ * .btn-resume:active
+ * Style appliqué lorsque le bouton "Reprendre" est cliqué.
+ * Simule l'enfoncement du bouton en le déplaçant légèrement vers le bas et en réduisant son ombre.
+ */
 .btn-resume:active {
     transform: translateY(2px);
     box-shadow: 0 2px #7bc430;
 }
 
-
+/**
+ * .btn-quit
+ * Style spécifique pour le bouton "Quitter".
+ */
 .btn-quit {
     background-color: #8cc63f;
     color: #ffffff;
     box-shadow: 0 4px #6fa32e;
-    font-family: 'JetBrains Mono', monospace;
 }
+/**
+ * .btn-quit:active
+ * Style appliqué lorsque le bouton "Quitter" est cliqué.
+ */
 .btn-quit:active {
     transform: translateY(2px);
     box-shadow: 0 2px #6fa32e;

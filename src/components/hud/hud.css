@@ -1,10 +1,30 @@
+/**
+ * @file hud.css
+ * Ce fichier contient les styles pour le Heads-Up Display (HUD) du jeu.
+ * Il définit l'apparence du score, de la question, de la catégorie et du bouton de pause.
+ */
+
+/**
+ * :root
+ * Définit les variables CSS (propriétés personnalisées) globales pour les couleurs.
+ * Cela permet de centraliser la palette de couleurs et de faciliter les modifications thématiques.
+ */
 :root {
-  --text-color: #545353;
-  --primary-color: #1BABDC; 
-  --secondary-color: #2c3e50;
-  --background-color: #ffffff; 
+  --text-color: #545353; /* Couleur de texte principale pour les éléments comme la question. */
+  --primary-color: #1BABDC; /* Couleur d'accentuation principale (bleu), utilisée pour les bordures et les ombres. */
+  --secondary-color: #2c3e50; /* Couleur secondaire (non utilisée actuellement mais définie pour une utilisation future). */
+  --background-color: #ffffff; /* Couleur de fond pour les éléments comme la boîte de question. */
 }
 
+/**
+ * .hud
+ * Style le conteneur principal du HUD.
+ * - `position: absolute`: Le positionne par-dessus le canvas du jeu.
+ * - `top: 20px`: Le place à 20px du haut de son conteneur parent.
+ * - `width: 100%`: Le fait s'étendre sur toute la largeur de l'écran.
+ * - `font-family`: Définit la police par défaut pour le HUD, avec un style "monospace" rappelant les terminaux.
+ * - `text-shadow`: Ajoute une ombre subtile au texte pour améliorer la lisibilité.
+ */
 .hud {
   position: absolute;
   top: 20px;
@@ -15,8 +35,17 @@
   padding: 0 20px;
   box-sizing: border-box;
   text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.5); 
+  
 }
 
+/**
+ * .pause-button
+ * Style le bouton de mise en pause du jeu.
+ * - `position: absolute`: Le positionne précisément dans le coin supérieur droit.
+ * - `border-radius: 50%`: Le rend parfaitement circulaire.
+ * - `display: flex`, `align-items`, `justify-content`: Centrent l'icône à l'intérieur du bouton.
+ * - `z-index: 10`: S'assure qu'il apparaît au-dessus des autres éléments du HUD.
+ */
 .pause-button {
   position: absolute;
   top: 0;
@@ -31,11 +60,24 @@
   z-index: 10; 
   padding: 0;
 }
+
+/**
+ * .pause-icon-img
+ * S'assure que l'image SVG de l'icône de pause remplit complètement l'espace du bouton parent.
+ */
 .pause-icon-img {
     width: 100%; 
     height: 100%;   
 }
 
+/**
+ * .score
+ * Style l'affichage du score.
+ * - `font-family: 'Technos'`: Utilise une police personnalisée pour un look distinctif.
+ * - `font-size: 3.5rem`: Rend le score grand et bien visible.
+ * - `text-shadow`: Crée un effet de lueur néon autour du texte, renforçant le style arcade.
+ * - `animation: pulse`: Applique une animation de pulsation subtile pour attirer l'œil.
+ */
 .score {
   font-family: 'Technos', sans-serif; 
   font-size: 3.5rem; 
@@ -46,6 +88,13 @@
   animation: pulse 2s infinite ease-in-out;
 }
 
+/**
+ * .question
+ * Style le conteneur qui affiche le texte de la question actuelle.
+ * Il est conçu comme une boîte centrée avec un fond blanc, une bordure colorée,
+ * des coins arrondis et une ombre portée pour le faire ressortir.
+ * Le `backdrop-filter` pourrait créer un effet de verre dépoli si le fond était semi-transparent.
+ */
 .question {
   font-size: 1rem;
   color: var(--text-color);
@@ -57,13 +106,26 @@
   margin: 20px auto 0;
   max-width: 800px;
   box-shadow: 0 4px 15px rgba(0, 0, 0, 0.5); 
-  backdrop-filter: blur(5px); 
+  backdrop-filter: blur(5px);
+  max-height: 55px;
+  overflow-y: auto;
 }
 
+/**
+ * .category
+ * Style le texte affichant la catégorie de la question.
+ * La couleur blanche le fait ressortir sur le fond potentiellement sombre du jeu.
+ */
 .category{
   color:#ffffff;
 }
 
+/**
+ * .answers, .answer, .answer:hover, .answer:active
+ * Ces classes sont actuellement masquées (`display: none`).
+ * Cela indique que les réponses ne sont pas affichées dans le HUD HTML,
+ * mais sont probablement dessinées directement sur l'élément <canvas> par la logique du jeu.
+ */
 .answers,
 .answer,
 .answer:hover,
@@ -72,6 +134,12 @@
   display: none;
 }
 
+/**
+ * @keyframes pulse
+ * Définit une animation de pulsation simple.
+ * L'élément grandit légèrement (à 105% de sa taille) puis revient à sa taille normale,
+ * créant un effet de "respiration" utilisé pour le score.
+ */
 @keyframes pulse {
   0% {
     transform: scale(1);

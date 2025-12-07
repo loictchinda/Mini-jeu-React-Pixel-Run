@@ -1,32 +1,64 @@
+/** @type {object | null} La question actuelle affichée dans le jeu. */
 let currentQuestion = null;
+/** @type {Function | null} La fonction de rappel à exécuter lorsqu'une réponse est choisie. */
 let onAnswerCallback = null;
+/** @type {number} La voie actuelle du joueur (0: haut, 1: milieu, 2: bas). */
 let currentPlayerLane = 1; // 0: top, 1: middle, 2: bottom
+/** @type {boolean} Indique si le jeu est en cours d'exécution. */
 let gameRunning = true;
+/** @type {number | null} L'ID de l'animation frame pour l'annulation. */
 let animationFrameId = null;
+/** @type {boolean} Indique si l'entrée utilisateur (clic) est activée. */
 let inputEnabled = false;
+/** @type {number} La vitesse de défilement actuelle du jeu. */
 let currentSpeed = 4; 
+/** @type {boolean} Indique si le jeu est en pause. */
 let isGamePaused = false;
 
+/** @const {number[]} Les positions Y pour chaque voie sur le canvas. */
 const laneYPositions = [295, 390, 490];
+/** @const {number} La hauteur de la zone cliquable pour chaque voie. */
 const laneHeight = 60;
+/** @const {number} La hauteur du sprite du coureur. */
 const runnerHeight = 100;
 
+/**
+ * Met le jeu en pause ou le reprend.
+ * @param {boolean} statut - True pour mettre en pause, false pour reprendre.
+ */
 export function setGamePaused(statut) {
     isGamePaused = statut;
 }
 
+/**
+ * Définit la vitesse de défilement du jeu.
+ * @param {number} speed - La nouvelle vitesse.
+ */
 export function setGameSpeed(speed) {
   currentSpeed = speed;
 }
 
+/**
+ * Met à jour la question actuellement affichée.
+ * @param {object} newQuestion - Le nouvel objet question.
+ */
 export function updateQuestion(newQuestion) {
   currentQuestion = newQuestion;
 }
 
+/**
+ * Met à jour la fonction de rappel pour la sélection de réponse.
+ * @param {Function} newOnAnswerCallback - La nouvelle fonction de rappel.
+ */
 export function updateOnAnswerCallback(newOnAnswerCallback) {
   onAnswerCallback = newOnAnswerCallback;
 }
 
+/**
+ * Gère les clics sur le canvas pour sélectionner une réponse.
+ * @param {number} x - La coordonnée X du clic.
+ * @param {number} y - La coordonnée Y du clic.
+ */
 export function handleCanvasClick(x, y) {
   if (!onAnswerCallback || !gameRunning || !inputEnabled || isGamePaused) return;
 
@@ -38,7 +70,11 @@ export function handleCanvasClick(x, y) {
     }
   }
 }
-//Se déplacer avec les touches du clavier
+
+/**
+ * Gère les entrées clavier pour déplacer le joueur et sélectionner des réponses.
+ * @param {KeyboardEvent} event - L'objet événement du clavier.
+ */
 function handleKeyDown(event) {
   if (!gameRunning || isGamePaused) return;
 
@@ -61,7 +97,10 @@ function handleKeyDown(event) {
       break;
   }
 }
-//Arrêter le jeu
+
+/**
+ * Arrête complètement le jeu et nettoie les écouteurs d'événements et l'animation.
+ */
 export function stopGame() {
     gameRunning = false;
     if (animationFrameId) {
@@ -70,6 +109,14 @@ export function stopGame() {
     window.removeEventListener('keydown', handleKeyDown);
 }
 
+/**
+ * Initialise et démarre la boucle de jeu principale.
+ * Charge toutes les images nécessaires avant de lancer l'animation.
+ * @param {HTMLCanvasElement} canvas - L'élément canvas sur lequel dessiner.
+ * @param {CanvasRenderingContext2D} ctx - Le contexte de rendu 2D du canvas.
+ * @param {object} question - L'objet question initial.
+ * @param {Function} onAnswerChosen - La fonction de rappel à appeler lorsqu'une réponse est choisie.
+ */
 export function startGame(canvas, ctx, question, onAnswerChosen) {
   isGamePaused = false;
   gameRunning = true;
@@ -85,6 +132,9 @@ export function startGame(canvas, ctx, question, onAnswerChosen) {
   const totalFrames = 15;
   const totalImagesToLoad = totalFrames + 1; 
 
+  /**
+   * Vérifie si toutes les images sont chargées, puis démarre la boucle de jeu.
+   */
   const checkAndStartLoop = () => {
     loadedImagesCount++;
     if (loadedImagesCount === totalImagesToLoad) {
@@ -119,11 +169,17 @@ export function startGame(canvas, ctx, question, onAnswerChosen) {
 
   window.addEventListener('keydown', handleKeyDown);
 
-  // Fonction de boucle de jeu 
+  /**
+   * Configure et démarre la boucle de jeu après le chargement des ressources.
+   */
   function startLoop() {
     let frameIndex = 0;
     let trackOffset = 0;
 
+    /**
+     * Dessine les options de réponse sur le canvas.
+     * Chaque option est affichée dans une boîte avec un fond et une bordure.
+     */
     function drawAnswers() {
       
       if (!currentQuestion || !currentQuestion.options) return;
@@ -178,11 +234,14 @@ ctx.stroke();
       });
     }
 
+    /**
+     * La boucle de jeu principale, appelée à chaque frame d'animation.
+     */
     function gameLoop() {
       if (!gameRunning) {
         return; 
       }
-      console.log("Vitesse actuelle :", currentSpeed);
+  
       ctx.clearRect(0, 0, canvas.width, canvas.height);
 
      
