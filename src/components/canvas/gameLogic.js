@@ -9,7 +9,7 @@ let gameRunning = true;
 /** @type {number | null} L'ID de l'animation frame pour l'annulation. */
 let animationFrameId = null;
 /** @type {boolean} Indique si l'entrée utilisateur (clic) est activée. */
-let inputEnabled = false;
+let inputEnabled = true;
 /** @type {number} La vitesse de défilement actuelle du jeu. */
 let currentSpeed = 4; 
 /** @type {boolean} Indique si le jeu est en pause. */

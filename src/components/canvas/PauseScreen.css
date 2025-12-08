@@ -7,6 +7,12 @@
  * - `z-index: 100`: S'assure qu'il est au-dessus de tous les autres éléments du jeu.
  * - `backdrop-filter: blur(2px)`: Applique un léger flou à tout ce qui se trouve derrière l'overlay.
  */
+@font-face {
+    font-family: 'Technos';
+    src: url('../../assets/technos/Technos.otf') format('opentype');
+    font-style: normal;
+}
+
 .pause-overlay {
     position: absolute;
     top: 0;
@@ -28,22 +34,21 @@
  * une bordure subtile, une ombre portée et un flou d'arrière-plan plus prononcé.
  */
 .pause-box {
-    background: linear-gradient(
-            135deg,
+    background: linear-gradient(135deg,
             rgba(255, 255, 255, 0.15),
-            rgba(255, 255, 255, 0.05)
-    );
+            rgba(255, 255, 255, 0.05));
     padding: 40px 60px;
     border-radius: 12px;
     color: white;
     border: 1px solid rgba(255, 255, 255, 0.2);
     box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
-    backdrop-filter: blur(10px); 
-    -webkit-backdrop-filter: blur(10px); /* Pour la compatibilité avec Safari */
-    font-family: 'Technos', sans-serif; 
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    /* Pour la compatibilité avec Safari */
+    font-family: 'Technos', sans-serif;
     min-width: 300px;
-    display: flex; 
-    flex-direction: column; 
+    display: flex;
+    flex-direction: column;
     justify-content: center;
     align-items: center;
     text-align: center;
@@ -67,7 +72,7 @@
  * Définit la police, la taille, les bordures arrondies et les transitions pour les effets au survol/clic.
  */
 .pause-btn {
-    font-family: 'JetBrains Mono', monospace; 
+    font-family: 'JetBrains Mono', monospace;
     display: block;
     width: 263px;
     padding: 10px;
@@ -79,8 +84,8 @@
     cursor: pointer;
     color: white;
     transition: transform 0.1s, box-shadow 0.1s;
-   
-   
+
+
 }
 
 /**
@@ -92,9 +97,10 @@
     background-color: #A1D161;
     color: #ffffff;
     box-shadow: 0 4px #7bc430;
-  
-    
+
+
 }
+
 /**
  * .btn-resume:active
  * Style appliqué lorsque le bouton "Reprendre" est cliqué.
@@ -114,6 +120,7 @@
     color: #ffffff;
     box-shadow: 0 4px #6fa32e;
 }
+
 /**
  * .btn-quit:active
  * Style appliqué lorsque le bouton "Quitter" est cliqué.

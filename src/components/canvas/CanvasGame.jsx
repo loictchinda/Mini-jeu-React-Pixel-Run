@@ -70,7 +70,7 @@ export default function CanvasGame({ question, onAnswerChosen, isGameOver, score
   return (
     <canvas
       ref={canvasRef}
-      width={1500}
+      width={1600}
       height={565}
       className="game-canvas"
     />

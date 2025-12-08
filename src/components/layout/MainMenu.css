@@ -4,6 +4,12 @@
  * y compris la grille des catégories, les cartes interactives et la typographie.
  */
 
+@font-face {
+    font-family: 'Technos';
+    src: url('../../assets/technos/Technos.otf') format('opentype');
+    font-style: normal;
+}
+
 .main-menu-container {
     display: flex;
     flex-direction: column;
@@ -15,8 +21,8 @@
 }
 
 .game-title {
-   
-   font-family: 'Technos', sans-serif; 
+
+    font-family: 'Technos', sans-serif;
     font-size: 3rem;
     color: white;
     text-transform: uppercase;
@@ -53,7 +59,7 @@
 
 
 .card-label {
-    font-family: 'JetBrains Mono', monospace; 
+    font-family: 'JetBrains Mono', monospace;
     color: white;
     font-size: 1.1rem;
     font-weight: 600;

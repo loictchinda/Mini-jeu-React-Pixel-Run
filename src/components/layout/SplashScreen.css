@@ -3,6 +3,11 @@
  * Elle définit l'apparence de l'écran de chargement, y compris
  * le titre, la barre de progression et le texte d'information.
  */
+@font-face {
+    font-family: 'Technos';
+    src: url('../../assets/technos/Technos.otf') format('opentype');
+    font-style: normal;
+}
 
 .splash-screen {
     position: fixed;
@@ -19,8 +24,8 @@
 }
 
 .splash-title {
-   
-    font-family: 'Technos', sans-serif; 
+
+    font-family: 'Technos', sans-serif;
     font-size: 4rem;
     font-weight: 700;
     color: white;
@@ -47,7 +52,7 @@
 }
 
 .loading-text {
-    font-family: 'JetBrains Mono', monospace; 
+    font-family: 'JetBrains Mono', monospace;
     font-size: 0.8rem;
     color: #bdc3c7;
     margin-top: 10px;

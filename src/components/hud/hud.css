@@ -15,7 +15,11 @@
   --secondary-color: #2c3e50; /* Couleur secondaire (non utilisée actuellement mais définie pour une utilisation future). */
   --background-color: #ffffff; /* Couleur de fond pour les éléments comme la boîte de question. */
 }
-
+@font-face {
+  font-family: 'Technos'; 
+  src: url('../../assets/technos/Technos.otf') format('opentype'); 
+  font-style: normal;
+}
 /**
  * .hud
  * Style le conteneur principal du HUD.

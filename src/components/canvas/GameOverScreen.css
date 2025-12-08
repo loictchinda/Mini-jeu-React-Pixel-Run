@@ -7,8 +7,14 @@
  * - `display: flex`: Utilisé pour centrer le contenu.
  * - `z-index`: Le place au-dessus de tous les autres éléments du jeu.
  */
+@font-face {
+    font-family: 'Technos';
+    src: url('../../assets/technos/Technos.otf') format('opentype');
+    font-style: normal;
+}
+
 .game-over-overlay {
-   
+
     position: fixed;
     top: 0;
     left: 0;
@@ -19,11 +25,11 @@
     background-position: center;
     display: flex;
     flex-direction: column;
-    justify-content: flex-start; 
+    justify-content: flex-start;
     align-items: center;
     z-index: 9999;
     padding-top: 50px;
-    font-family: 'JetBrains Mono', monospace; 
+    font-family: 'JetBrains Mono', monospace;
 }
 
 /**
@@ -39,7 +45,7 @@
     width: 100%;
     height: 100%;
     background-color: rgba(0, 0, 0, 0.5);
-    z-index: 0; 
+    z-index: 0;
 }
 
 /**
@@ -51,14 +57,16 @@
 .game-over-card {
     background: rgba(255, 255, 255, 0.15);
     backdrop-filter: blur(10px);
-    -webkit-backdrop-filter: blur(10px); /* Compatibilité pour Safari */
-    border: 1px solid rgba(255, 255, 255, 0.3); /* Bordure subtile pour définir les contours */
+    -webkit-backdrop-filter: blur(10px);
+    /* Compatibilité pour Safari */
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    /* Bordure subtile pour définir les contours */
     border-radius: 20px;
     padding: 40px 60px;
     width: 400px;
     box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.2);
-    display: flex;             
-    flex-direction: column; 
+    display: flex;
+    flex-direction: column;
     justify-content: center;
     align-items: center;
     text-align: center;
@@ -70,7 +78,7 @@
  * Utilise une police personnalisée, une grande taille et un effet de contour/ombre pour un look percutant.
  */
 .game-over-title {
-    font-family: 'Technos', sans-serif; 
+    font-family: 'Technos', sans-serif;
     font-size: 3rem;
     text-align: center;
     color: white;
@@ -86,7 +94,7 @@
  */
 .score-section {
     margin-bottom: 30px;
-    font-family: 'JetBrains Mono', monospace; 
+    font-family: 'JetBrains Mono', monospace;
     color: white;
 }
 
@@ -118,7 +126,7 @@
  * Crée un bouton de style "pilule" avec une ombre pour un effet 3D.
  */
 .btn-action {
-    font-family: 'JetBrains Mono', monospace; 
+    font-family: 'JetBrains Mono', monospace;
     padding: 10px;
     font-size: 1rem;
     border: none;
